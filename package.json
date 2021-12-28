@@ -1,0 +1,29 @@
+{
+  "name": "saros-api-nodejs",
+  "version": "1.0.0",
+  "description": "Api em NodeJS, GraphQL e Prisma do Saros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juniormartinxo/saros-api-nodejs.git"
+  },
+  "author": "Junior Martins <juniormartinxo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juniormartinxo/saros-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/juniormartinxo/saros-api-nodejs#readme",
+  "dependencies": {
+    "@prisma/client": "^3.7.0",
+    "prisma": "3.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.5",
+    "ts-node": "10.4.0",
+    "tslib": "2.3.1",
+    "typescript": "4.5.4"
+  }
+}
