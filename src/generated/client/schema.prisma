@@ -1,0 +1,57 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model Users {
+  user_id         String   @id @default(uuid())
+  user_name       String
+  user_email      String   @unique
+  user_salt       String
+  user_password   String
+  user_created_at DateTime @default(now())
+  user_updated_at DateTime
+}
+
+model Teachers {
+  teacher_id              String   @id @default(uuid())
+  teacher_name            String
+  teacher_email           String   @unique
+  teacher_disciplines_ids Json     @db.JsonB
+  teacher_situation       String   @db.Char(1)
+  teacher_created_at      DateTime @default(now())
+  teacher_updated_at      DateTime
+}
+
+model Disciplines {
+  discipline_id        String @id @default(uuid())
+  discipline_name      String
+  discipline_situation String @db.Char(1)
+}
+
+model Classes {
+  class_id        String @id @default(uuid())
+  class_name      String
+  class_email     String @unique
+  class_situation String @db.Char(1)
+}
+
+model Timesheets {
+  timesheet_id         String   @id @default(uuid())
+  timesheet_teacher_id String
+  timesheet_class_id   String
+  timesheet_date       DateTime
+  timesheet_situation  String   @db.Char(1)
+}
+
+model Curriculums {
+  curriculum_id        String @id @default(uuid())
+  curriculum_name      String
+  curriculum_class_id  String
+  curriculum_situation String @db.Char(1)
+}
