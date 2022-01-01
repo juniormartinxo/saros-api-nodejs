@@ -35,10 +35,11 @@ model Disciplines {
 }
 
 model Classes {
-  class_id        String @id @default(uuid())
-  class_name      String
-  class_email     String @unique
-  class_situation String @db.Char(1)
+  class_id           String @id @default(uuid())
+  class_name         String
+  class_email        String @unique
+  class_teachers_ids Json   @db.JsonB
+  class_situation    String @db.Char(1)
 }
 
 model Timesheets {
@@ -54,4 +55,11 @@ model Curriculums {
   curriculum_name      String
   curriculum_class_id  String
   curriculum_situation String @db.Char(1)
+}
+
+model Schedules {
+  schedule_id        String @id @default(uuid())
+  schedule_name      String
+  schedule_time      String
+  schedule_situation String @db.Char(1)
 }
