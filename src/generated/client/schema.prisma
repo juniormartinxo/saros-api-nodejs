@@ -78,12 +78,13 @@ model Schedules {
 
 // Ensino/ Cursos
 model Educations {
-  education_id         String   @id @default(uuid())
+  education_id         String    @id @default(uuid())
   education_name       String
   education_nickname   String
-  education_created_at DateTime @default(now())
+  education_created_at DateTime  @default(now())
   education_updated_at DateTime
-  education_situation  String   @default("A") @db.Char(1)
+  education_situation  String    @default("A") @db.Char(1)
+  Classes              Classes[]
 }
 
 // Diciplinas
@@ -97,6 +98,33 @@ model Subjects {
   subject_situation  String   @default("A") @db.Char(1)
 }
 
+// Professores
+model Teachers {
+  teacher_id              String   @id @default(uuid())
+  school                  Schools  @relation(fields: [teacher_school_id], references: [school_id])
+  teacher_school_id       String
+  teacher_name            String
+  teacher_nickname        String
+  teacher_email           String   @unique
+  teacher_celphone        String   @db.Char(10)
+  teacher_disciplines_ids Json     @db.JsonB
+  teacher_shifts_ids      Json     @db.JsonB
+  teacher_restrictions    Json     @db.JsonB
+  teacher_created_at      DateTime @default(now())
+  teacher_updated_at      DateTime
+  teacher_situation       String   @default("A") @db.Char(1)
+}
+
+// Turmas
+model Classes {
+  class_id           String     @id @default(uuid())
+  class_name         String
+  class_teachers_ids Json       @db.JsonB
+  education          Educations @relation(fields: [class_education_id], references: [education_id])
+  class_education_id String
+  class_situation    String     @default("A") @db.Char(1)
+}
+
 // Usuários
 model Users {
   user_id         String   @id @default(uuid())
@@ -107,28 +135,6 @@ model Users {
   user_created_at DateTime @default(now())
   user_updated_at DateTime
   user_situation  String   @default("A") @db.Char(1)
-}
-
-// Professores
-model Teachers {
-  teacher_id              String   @id @default(uuid())
-  school                  Schools  @relation(fields: [teacher_school_id], references: [school_id])
-  teacher_school_id       String
-  teacher_name            String
-  teacher_email           String   @unique
-  teacher_disciplines_ids Json     @db.JsonB
-  teacher_situation       String   @default("A") @db.Char(1)
-  teacher_created_at      DateTime @default(now())
-  teacher_updated_at      DateTime
-}
-
-// Turmas
-model Classes {
-  class_id           String @id @default(uuid())
-  class_name         String
-  class_email        String @unique
-  class_teachers_ids Json   @db.JsonB
-  class_situation    String @default("A") @db.Char(1)
 }
 
 // Quadro de horários

@@ -133,6 +133,29 @@ exports.Prisma.SubjectsScalarFieldEnum = makeEnum({
   subject_situation: 'subject_situation'
 });
 
+exports.Prisma.TeachersScalarFieldEnum = makeEnum({
+  teacher_id: 'teacher_id',
+  teacher_school_id: 'teacher_school_id',
+  teacher_name: 'teacher_name',
+  teacher_nickname: 'teacher_nickname',
+  teacher_email: 'teacher_email',
+  teacher_celphone: 'teacher_celphone',
+  teacher_disciplines_ids: 'teacher_disciplines_ids',
+  teacher_shifts_ids: 'teacher_shifts_ids',
+  teacher_restrictions: 'teacher_restrictions',
+  teacher_created_at: 'teacher_created_at',
+  teacher_updated_at: 'teacher_updated_at',
+  teacher_situation: 'teacher_situation'
+});
+
+exports.Prisma.ClassesScalarFieldEnum = makeEnum({
+  class_id: 'class_id',
+  class_name: 'class_name',
+  class_teachers_ids: 'class_teachers_ids',
+  class_education_id: 'class_education_id',
+  class_situation: 'class_situation'
+});
+
 exports.Prisma.UsersScalarFieldEnum = makeEnum({
   user_id: 'user_id',
   user_name: 'user_name',
@@ -142,25 +165,6 @@ exports.Prisma.UsersScalarFieldEnum = makeEnum({
   user_created_at: 'user_created_at',
   user_updated_at: 'user_updated_at',
   user_situation: 'user_situation'
-});
-
-exports.Prisma.TeachersScalarFieldEnum = makeEnum({
-  teacher_id: 'teacher_id',
-  teacher_school_id: 'teacher_school_id',
-  teacher_name: 'teacher_name',
-  teacher_email: 'teacher_email',
-  teacher_disciplines_ids: 'teacher_disciplines_ids',
-  teacher_situation: 'teacher_situation',
-  teacher_created_at: 'teacher_created_at',
-  teacher_updated_at: 'teacher_updated_at'
-});
-
-exports.Prisma.ClassesScalarFieldEnum = makeEnum({
-  class_id: 'class_id',
-  class_name: 'class_name',
-  class_email: 'class_email',
-  class_teachers_ids: 'class_teachers_ids',
-  class_situation: 'class_situation'
 });
 
 exports.Prisma.TimesheetsScalarFieldEnum = makeEnum({
@@ -227,9 +231,9 @@ exports.Prisma.ModelName = makeEnum({
   Schedules: 'Schedules',
   Educations: 'Educations',
   Subjects: 'Subjects',
-  Users: 'Users',
   Teachers: 'Teachers',
   Classes: 'Classes',
+  Users: 'Users',
   Timesheets: 'Timesheets',
   Curriculums: 'Curriculums'
 });

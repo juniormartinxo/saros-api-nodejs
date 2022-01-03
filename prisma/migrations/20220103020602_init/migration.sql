@@ -80,6 +80,35 @@ CREATE TABLE "Subjects" (
 );
 
 -- CreateTable
+CREATE TABLE "Teachers" (
+    "teacher_id" TEXT NOT NULL,
+    "teacher_school_id" TEXT NOT NULL,
+    "teacher_name" TEXT NOT NULL,
+    "teacher_nickname" TEXT NOT NULL,
+    "teacher_email" TEXT NOT NULL,
+    "teacher_celphone" CHAR(10) NOT NULL,
+    "teacher_disciplines_ids" JSONB NOT NULL,
+    "teacher_shifts_ids" JSONB NOT NULL,
+    "teacher_restrictions" JSONB NOT NULL,
+    "teacher_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "teacher_updated_at" TIMESTAMP(3) NOT NULL,
+    "teacher_situation" CHAR(1) NOT NULL DEFAULT E'A',
+
+    CONSTRAINT "Teachers_pkey" PRIMARY KEY ("teacher_id")
+);
+
+-- CreateTable
+CREATE TABLE "Classes" (
+    "class_id" TEXT NOT NULL,
+    "class_name" TEXT NOT NULL,
+    "class_teachers_ids" JSONB NOT NULL,
+    "class_education_id" TEXT NOT NULL,
+    "class_situation" CHAR(1) NOT NULL DEFAULT E'A',
+
+    CONSTRAINT "Classes_pkey" PRIMARY KEY ("class_id")
+);
+
+-- CreateTable
 CREATE TABLE "Users" (
     "user_id" TEXT NOT NULL,
     "user_name" TEXT NOT NULL,
@@ -91,31 +120,6 @@ CREATE TABLE "Users" (
     "user_situation" CHAR(1) NOT NULL DEFAULT E'A',
 
     CONSTRAINT "Users_pkey" PRIMARY KEY ("user_id")
-);
-
--- CreateTable
-CREATE TABLE "Teachers" (
-    "teacher_id" TEXT NOT NULL,
-    "teacher_school_id" TEXT NOT NULL,
-    "teacher_name" TEXT NOT NULL,
-    "teacher_email" TEXT NOT NULL,
-    "teacher_disciplines_ids" JSONB NOT NULL,
-    "teacher_situation" CHAR(1) NOT NULL DEFAULT E'A',
-    "teacher_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "teacher_updated_at" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "Teachers_pkey" PRIMARY KEY ("teacher_id")
-);
-
--- CreateTable
-CREATE TABLE "Classes" (
-    "class_id" TEXT NOT NULL,
-    "class_name" TEXT NOT NULL,
-    "class_email" TEXT NOT NULL,
-    "class_teachers_ids" JSONB NOT NULL,
-    "class_situation" CHAR(1) NOT NULL DEFAULT E'A',
-
-    CONSTRAINT "Classes_pkey" PRIMARY KEY ("class_id")
 );
 
 -- CreateTable
@@ -140,16 +144,16 @@ CREATE TABLE "Curriculums" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Users_user_email_key" ON "Users"("user_email");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Teachers_teacher_email_key" ON "Teachers"("teacher_email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Classes_class_email_key" ON "Classes"("class_email");
+CREATE UNIQUE INDEX "Users_user_email_key" ON "Users"("user_email");
 
 -- AddForeignKey
 ALTER TABLE "Schedules" ADD CONSTRAINT "Schedules_schedule_shift_id_fkey" FOREIGN KEY ("schedule_shift_id") REFERENCES "Shifts"("shift_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Teachers" ADD CONSTRAINT "Teachers_teacher_school_id_fkey" FOREIGN KEY ("teacher_school_id") REFERENCES "Schools"("school_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Classes" ADD CONSTRAINT "Classes_class_education_id_fkey" FOREIGN KEY ("class_education_id") REFERENCES "Educations"("education_id") ON DELETE RESTRICT ON UPDATE CASCADE;
