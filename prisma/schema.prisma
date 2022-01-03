@@ -8,6 +8,96 @@ generator client {
   output   = "../src/generated/client"
 }
 
+enum Category {
+  estadual
+  federal
+  municipal
+  militar
+  particular
+}
+
+// Escolas
+model Schools {
+  school_id           String     @id @default(uuid())
+  school_name         String
+  school_category     Category   @default(estadual)
+  school_cnpj         String     @db.Char(14)
+  school_address      String
+  school_number       String
+  school_neighborhood String
+  school_city         String
+  school_state        String
+  school_cep          String     @db.Char(8)
+  school_phone        String     @db.Char(10)
+  school_email        String
+  school_created_at   DateTime   @default(now())
+  school_updated_at   DateTime
+  school_situation    String     @default("A") @db.Char(1)
+  Teachers            Teachers[]
+}
+
+enum ShiftNames {
+  matutino
+  vespertino
+  noturno
+}
+
+enum DayOfTheWeek {
+  domingo
+  segunda
+  terca
+  quarta
+  quinta
+  sexta
+  sabado
+}
+
+// Turnos
+model Shifts {
+  shift_id                   String       @id @default(uuid())
+  shift_name                 ShiftNames   @default(matutino)
+  shift_day_of_week          DayOfTheWeek @default(segunda)
+  shift_number_class_per_day Int          @default(1)
+  shift_day_of_week_class    Boolean      @default(false)
+  shift_created_at           DateTime     @default(now())
+  shift_updated_at           DateTime
+  shitf_situation            String       @default("A") @db.Char(1)
+  Schedules                  Schedules[]
+}
+
+// Horários das aulas
+model Schedules {
+  schedule_id        String   @id @default(uuid())
+  schedule_name      String
+  schedule_start     DateTime
+  schedule_end       DateTime
+  shift              Shifts   @relation(fields: [schedule_shift_id], references: [shift_id])
+  schedule_shift_id  String
+  schedule_situation String   @default("A") @db.Char(1)
+}
+
+// Ensino/ Cursos
+model Educations {
+  education_id         String   @id @default(uuid())
+  education_name       String
+  education_nickname   String
+  education_created_at DateTime @default(now())
+  education_updated_at DateTime
+  education_situation  String   @default("A") @db.Char(1)
+}
+
+// Diciplinas
+model Subjects {
+  subject_id         String   @id @default(uuid())
+  subject_name       String
+  subject_nickname   String
+  subject_educations Json     @db.JsonB
+  subject_created_at DateTime @default(now())
+  subject_updated_at DateTime
+  subject_situation  String   @default("A") @db.Char(1)
+}
+
+// Usuários
 model Users {
   user_id         String   @id @default(uuid())
   user_name       String
@@ -16,50 +106,44 @@ model Users {
   user_password   String
   user_created_at DateTime @default(now())
   user_updated_at DateTime
+  user_situation  String   @default("A") @db.Char(1)
 }
 
+// Professores
 model Teachers {
   teacher_id              String   @id @default(uuid())
+  school                  Schools  @relation(fields: [teacher_school_id], references: [school_id])
+  teacher_school_id       String
   teacher_name            String
   teacher_email           String   @unique
   teacher_disciplines_ids Json     @db.JsonB
-  teacher_situation       String   @db.Char(1)
+  teacher_situation       String   @default("A") @db.Char(1)
   teacher_created_at      DateTime @default(now())
   teacher_updated_at      DateTime
 }
 
-model Disciplines {
-  discipline_id        String @id @default(uuid())
-  discipline_name      String
-  discipline_situation String @db.Char(1)
-}
-
+// Turmas
 model Classes {
   class_id           String @id @default(uuid())
   class_name         String
   class_email        String @unique
   class_teachers_ids Json   @db.JsonB
-  class_situation    String @db.Char(1)
+  class_situation    String @default("A") @db.Char(1)
 }
 
+// Quadro de horários
 model Timesheets {
   timesheet_id         String   @id @default(uuid())
   timesheet_teacher_id String
   timesheet_class_id   String
   timesheet_date       DateTime
-  timesheet_situation  String   @db.Char(1)
+  timesheet_situation  String   @default("A") @db.Char(1)
 }
 
+// Matriz curricular
 model Curriculums {
   curriculum_id        String @id @default(uuid())
   curriculum_name      String
   curriculum_class_id  String
-  curriculum_situation String @db.Char(1)
-}
-
-model Schedules {
-  schedule_id        String @id @default(uuid())
-  schedule_name      String
-  schedule_time      String
-  schedule_situation String @db.Char(1)
+  curriculum_situation String @default("A") @db.Char(1)
 }

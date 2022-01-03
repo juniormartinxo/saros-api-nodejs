@@ -76,6 +76,63 @@ Prisma.AnyNull = 'AnyNull'
 // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
 function makeEnum(x) { return x; }
 
+exports.Prisma.SchoolsScalarFieldEnum = makeEnum({
+  school_id: 'school_id',
+  school_name: 'school_name',
+  school_category: 'school_category',
+  school_cnpj: 'school_cnpj',
+  school_address: 'school_address',
+  school_number: 'school_number',
+  school_neighborhood: 'school_neighborhood',
+  school_city: 'school_city',
+  school_state: 'school_state',
+  school_cep: 'school_cep',
+  school_phone: 'school_phone',
+  school_email: 'school_email',
+  school_created_at: 'school_created_at',
+  school_updated_at: 'school_updated_at',
+  school_situation: 'school_situation'
+});
+
+exports.Prisma.ShiftsScalarFieldEnum = makeEnum({
+  shift_id: 'shift_id',
+  shift_name: 'shift_name',
+  shift_day_of_week: 'shift_day_of_week',
+  shift_number_class_per_day: 'shift_number_class_per_day',
+  shift_day_of_week_class: 'shift_day_of_week_class',
+  shift_created_at: 'shift_created_at',
+  shift_updated_at: 'shift_updated_at',
+  shitf_situation: 'shitf_situation'
+});
+
+exports.Prisma.SchedulesScalarFieldEnum = makeEnum({
+  schedule_id: 'schedule_id',
+  schedule_name: 'schedule_name',
+  schedule_start: 'schedule_start',
+  schedule_end: 'schedule_end',
+  schedule_shift_id: 'schedule_shift_id',
+  schedule_situation: 'schedule_situation'
+});
+
+exports.Prisma.EducationsScalarFieldEnum = makeEnum({
+  education_id: 'education_id',
+  education_name: 'education_name',
+  education_nickname: 'education_nickname',
+  education_created_at: 'education_created_at',
+  education_updated_at: 'education_updated_at',
+  education_situation: 'education_situation'
+});
+
+exports.Prisma.SubjectsScalarFieldEnum = makeEnum({
+  subject_id: 'subject_id',
+  subject_name: 'subject_name',
+  subject_nickname: 'subject_nickname',
+  subject_educations: 'subject_educations',
+  subject_created_at: 'subject_created_at',
+  subject_updated_at: 'subject_updated_at',
+  subject_situation: 'subject_situation'
+});
+
 exports.Prisma.UsersScalarFieldEnum = makeEnum({
   user_id: 'user_id',
   user_name: 'user_name',
@@ -83,11 +140,13 @@ exports.Prisma.UsersScalarFieldEnum = makeEnum({
   user_salt: 'user_salt',
   user_password: 'user_password',
   user_created_at: 'user_created_at',
-  user_updated_at: 'user_updated_at'
+  user_updated_at: 'user_updated_at',
+  user_situation: 'user_situation'
 });
 
 exports.Prisma.TeachersScalarFieldEnum = makeEnum({
   teacher_id: 'teacher_id',
+  teacher_school_id: 'teacher_school_id',
   teacher_name: 'teacher_name',
   teacher_email: 'teacher_email',
   teacher_disciplines_ids: 'teacher_disciplines_ids',
@@ -96,16 +155,11 @@ exports.Prisma.TeachersScalarFieldEnum = makeEnum({
   teacher_updated_at: 'teacher_updated_at'
 });
 
-exports.Prisma.DisciplinesScalarFieldEnum = makeEnum({
-  discipline_id: 'discipline_id',
-  discipline_name: 'discipline_name',
-  discipline_situation: 'discipline_situation'
-});
-
 exports.Prisma.ClassesScalarFieldEnum = makeEnum({
   class_id: 'class_id',
   class_name: 'class_name',
   class_email: 'class_email',
+  class_teachers_ids: 'class_teachers_ids',
   class_situation: 'class_situation'
 });
 
@@ -143,12 +197,38 @@ exports.Prisma.JsonNullValueFilter = makeEnum({
   JsonNull: 'JsonNull',
   AnyNull: 'AnyNull'
 });
+exports.Category = makeEnum({
+  estadual: 'estadual',
+  federal: 'federal',
+  municipal: 'municipal',
+  militar: 'militar',
+  particular: 'particular'
+});
 
+exports.ShiftNames = makeEnum({
+  matutino: 'matutino',
+  vespertino: 'vespertino',
+  noturno: 'noturno'
+});
+
+exports.DayOfTheWeek = makeEnum({
+  domingo: 'domingo',
+  segunda: 'segunda',
+  terca: 'terca',
+  quarta: 'quarta',
+  quinta: 'quinta',
+  sexta: 'sexta',
+  sabado: 'sabado'
+});
 
 exports.Prisma.ModelName = makeEnum({
+  Schools: 'Schools',
+  Shifts: 'Shifts',
+  Schedules: 'Schedules',
+  Educations: 'Educations',
+  Subjects: 'Subjects',
   Users: 'Users',
   Teachers: 'Teachers',
-  Disciplines: 'Disciplines',
   Classes: 'Classes',
   Timesheets: 'Timesheets',
   Curriculums: 'Curriculums'
