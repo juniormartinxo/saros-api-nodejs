@@ -59,8 +59,8 @@ const path = require('path')
 const { findSync } = require('./runtime')
 
 const dirname = findSync(process.cwd(), [
-    "src\\generated\\client",
-    "generated\\client",
+    "prisma\\client",
+    "client",
 ], ['d'], ['d'], 1)[0] || __dirname
 /**
  * Enums
@@ -246,7 +246,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\webapps\\saros-api-nodejs\\src\\generated\\client",
+      "value": "D:\\webapps\\saros-api-nodejs\\prisma\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -257,10 +257,10 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "..\\..\\..\\.env",
-    "schemaEnvPath": "..\\..\\..\\.env"
+    "rootEnvPath": "..\\..\\.env",
+    "schemaEnvPath": "..\\..\\.env"
   },
-  "relativePath": "..\\..\\..\\prisma",
+  "relativePath": "..",
   "clientVersion": "3.7.0",
   "engineVersion": "8746e055198f517658c08a0c426c7eec87f5a85f",
   "datasourceNames": [
@@ -285,6 +285,6 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 path.join(__dirname, 'query_engine-windows.dll.node');
-path.join(process.cwd(), './src\generated\client\query_engine-windows.dll.node')
+path.join(process.cwd(), './prisma\client\query_engine-windows.dll.node')
 path.join(__dirname, 'schema.prisma');
-path.join(process.cwd(), './src\generated\client\schema.prisma')
+path.join(process.cwd(), './prisma\client\schema.prisma')
