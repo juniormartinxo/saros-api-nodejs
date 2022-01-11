@@ -49,6 +49,8 @@ CREATE TABLE "Schedules" (
     "schedule_start" TIMESTAMP(3) NOT NULL,
     "schedule_end" TIMESTAMP(3) NOT NULL,
     "schedule_shift_id" TEXT NOT NULL,
+    "schedule_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "schedule_updated_at" TIMESTAMP(3) NOT NULL,
     "schedule_situation" CHAR(1) NOT NULL DEFAULT E'A',
 
     CONSTRAINT "Schedules_pkey" PRIMARY KEY ("schedule_id")
@@ -103,6 +105,8 @@ CREATE TABLE "Classes" (
     "class_name" TEXT NOT NULL,
     "class_teachers_ids" JSONB NOT NULL,
     "class_education_id" TEXT NOT NULL,
+    "class_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "class_updated_at" TIMESTAMP(3) NOT NULL,
     "class_situation" CHAR(1) NOT NULL DEFAULT E'A',
 
     CONSTRAINT "Classes_pkey" PRIMARY KEY ("class_id")
@@ -128,6 +132,8 @@ CREATE TABLE "Timesheets" (
     "timesheet_teacher_id" TEXT NOT NULL,
     "timesheet_class_id" TEXT NOT NULL,
     "timesheet_date" TIMESTAMP(3) NOT NULL,
+    "timesheet_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "timesheet_updated_at" TIMESTAMP(3) NOT NULL,
     "timesheet_situation" CHAR(1) NOT NULL DEFAULT E'A',
 
     CONSTRAINT "Timesheets_pkey" PRIMARY KEY ("timesheet_id")
@@ -138,6 +144,8 @@ CREATE TABLE "Curriculums" (
     "curriculum_id" TEXT NOT NULL,
     "curriculum_name" TEXT NOT NULL,
     "curriculum_class_id" TEXT NOT NULL,
+    "curriculum_created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "curriculum_updated_at" TIMESTAMP(3) NOT NULL,
     "curriculum_situation" CHAR(1) NOT NULL DEFAULT E'A',
 
     CONSTRAINT "Curriculums_pkey" PRIMARY KEY ("curriculum_id")
