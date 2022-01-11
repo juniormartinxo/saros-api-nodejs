@@ -30,7 +30,7 @@ model Schools {
   school_phone        String     @db.Char(10)
   school_email        String
   school_created_at   DateTime   @default(now())
-  school_updated_at   DateTime
+  school_updated_at   DateTime   @updatedAt
   school_situation    String     @default("A") @db.Char(1)
   Teachers            Teachers[]
 }
@@ -59,20 +59,22 @@ model Shifts {
   shift_number_class_per_day Int          @default(1)
   shift_day_of_week_class    Boolean      @default(false)
   shift_created_at           DateTime     @default(now())
-  shift_updated_at           DateTime
+  shift_updated_at           DateTime     @updatedAt
   shitf_situation            String       @default("A") @db.Char(1)
   Schedules                  Schedules[]
 }
 
 // Horários das aulas
 model Schedules {
-  schedule_id        String   @id @default(uuid())
-  schedule_name      String
-  schedule_start     DateTime
-  schedule_end       DateTime
-  shift              Shifts   @relation(fields: [schedule_shift_id], references: [shift_id])
-  schedule_shift_id  String
-  schedule_situation String   @default("A") @db.Char(1)
+  schedule_id         String   @id @default(uuid())
+  schedule_name       String
+  schedule_start      DateTime
+  schedule_end        DateTime
+  shift               Shifts   @relation(fields: [schedule_shift_id], references: [shift_id])
+  schedule_shift_id   String
+  schedule_created_at DateTime @default(now())
+  schedule_updated_at DateTime @updatedAt
+  schedule_situation  String   @default("A") @db.Char(1)
 }
 
 // Ensino/ Cursos
@@ -81,7 +83,7 @@ model Educations {
   education_name       String
   education_nickname   String
   education_created_at DateTime  @default(now())
-  education_updated_at DateTime
+  education_updated_at DateTime  @updatedAt
   education_situation  String    @default("A") @db.Char(1)
   Classes              Classes[]
 }
@@ -93,7 +95,7 @@ model Subjects {
   subject_nickname   String
   subject_educations Json     @db.JsonB
   subject_created_at DateTime @default(now())
-  subject_updated_at DateTime
+  subject_updated_at DateTime @updatedAt
   subject_situation  String   @default("A") @db.Char(1)
 }
 
@@ -110,7 +112,7 @@ model Teachers {
   teacher_shifts_ids      Json     @db.JsonB
   teacher_restrictions    Json     @db.JsonB
   teacher_created_at      DateTime @default(now())
-  teacher_updated_at      DateTime
+  teacher_updated_at      DateTime @updatedAt
   teacher_situation       String   @default("A") @db.Char(1)
 }
 
@@ -121,6 +123,8 @@ model Classes {
   class_teachers_ids Json       @db.JsonB
   education          Educations @relation(fields: [class_education_id], references: [education_id])
   class_education_id String
+  class_created_at   DateTime   @default(now())
+  class_updated_at   DateTime   @updatedAt
   class_situation    String     @default("A") @db.Char(1)
 }
 
@@ -132,7 +136,7 @@ model Users {
   user_salt       String
   user_password   String
   user_created_at DateTime @default(now())
-  user_updated_at DateTime
+  user_updated_at DateTime @updatedAt
   user_situation  String   @default("A") @db.Char(1)
 }
 
@@ -142,13 +146,17 @@ model Timesheets {
   timesheet_teacher_id String
   timesheet_class_id   String
   timesheet_date       DateTime
+  timesheet_created_at DateTime @default(now())
+  timesheet_updated_at DateTime @updatedAt
   timesheet_situation  String   @default("A") @db.Char(1)
 }
 
 // Matriz curricular
 model Curriculums {
-  curriculum_id        String @id @default(uuid())
-  curriculum_name      String
-  curriculum_class_id  String
-  curriculum_situation String @default("A") @db.Char(1)
+  curriculum_id         String   @id @default(uuid())
+  curriculum_name       String
+  curriculum_class_id   String
+  curriculum_created_at DateTime @default(now())
+  curriculum_updated_at DateTime @updatedAt
+  curriculum_situation  String   @default("A") @db.Char(1)
 }
