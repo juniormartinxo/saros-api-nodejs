@@ -19,9 +19,9 @@
   "homepage": "https://github.com/juniormartinxo/saros-api-nodejs#readme",
   "dependencies": {
     "@prisma/client": "3.7.0",
-    "moment": "^2.29.1",
+    "date-fns": "2.28.0",
     "prisma": "3.7.0",
-    "ts-node": "^10.4.0"
+    "ts-node": "10.4.0"
   },
   "devDependencies": {
     "@types/node": "17.0.5",

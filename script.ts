@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
-import moment from 'moment'
+//import moment from 'moment'
+import formatISO from 'date-fns/formatISO'
 
 const prisma = new PrismaClient()
 
@@ -25,13 +26,18 @@ async function main() {
   })
   */
 
-  const dateT = moment('2022-01-01').format('YYYY-MM-DD')
+  const birth = new Date('2022-01-01')
+  const dateT = formatISO(birth)
+
+  //const dateR = new Date('2022-01-01')
+
+  console.log(dateT)
 
   const timesheets = await prisma.timesheets.create({
     data: {
       timesheet_teacher_id: '09671dee-49c1-400f-8431-046571784609',
       timesheet_class_id: '72e403d8-c36e-43a9-94b2-2820bcc1ec14',
-      timesheet_date: new Date(dateT),
+      timesheet_date: dateT,
     },
   })
 
