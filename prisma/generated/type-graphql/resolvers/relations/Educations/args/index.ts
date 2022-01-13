@@ -1,0 +1,1 @@
+export { EducationsClassesArgs } from "./EducationsClassesArgs";

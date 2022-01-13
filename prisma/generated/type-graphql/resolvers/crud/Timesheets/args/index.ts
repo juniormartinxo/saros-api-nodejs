@@ -1,0 +1,12 @@
+export { AggregateTimesheetsArgs } from "./AggregateTimesheetsArgs";
+export { CreateManyTimesheetsArgs } from "./CreateManyTimesheetsArgs";
+export { CreateTimesheetsArgs } from "./CreateTimesheetsArgs";
+export { DeleteManyTimesheetsArgs } from "./DeleteManyTimesheetsArgs";
+export { DeleteTimesheetsArgs } from "./DeleteTimesheetsArgs";
+export { FindFirstTimesheetsArgs } from "./FindFirstTimesheetsArgs";
+export { FindManyTimesheetsArgs } from "./FindManyTimesheetsArgs";
+export { FindUniqueTimesheetsArgs } from "./FindUniqueTimesheetsArgs";
+export { GroupByTimesheetsArgs } from "./GroupByTimesheetsArgs";
+export { UpdateManyTimesheetsArgs } from "./UpdateManyTimesheetsArgs";
+export { UpdateTimesheetsArgs } from "./UpdateTimesheetsArgs";
+export { UpsertTimesheetsArgs } from "./UpsertTimesheetsArgs";

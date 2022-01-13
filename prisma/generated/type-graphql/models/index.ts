@@ -1,0 +1,10 @@
+export { Classes } from "./Classes";
+export { Curriculums } from "./Curriculums";
+export { Educations } from "./Educations";
+export { Schedules } from "./Schedules";
+export { Schools } from "./Schools";
+export { Shifts } from "./Shifts";
+export { Subjects } from "./Subjects";
+export { Teachers } from "./Teachers";
+export { Timesheets } from "./Timesheets";
+export { Users } from "./Users";

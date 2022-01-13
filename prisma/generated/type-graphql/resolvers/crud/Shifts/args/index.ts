@@ -1,0 +1,12 @@
+export { AggregateShiftsArgs } from "./AggregateShiftsArgs";
+export { CreateManyShiftsArgs } from "./CreateManyShiftsArgs";
+export { CreateShiftsArgs } from "./CreateShiftsArgs";
+export { DeleteManyShiftsArgs } from "./DeleteManyShiftsArgs";
+export { DeleteShiftsArgs } from "./DeleteShiftsArgs";
+export { FindFirstShiftsArgs } from "./FindFirstShiftsArgs";
+export { FindManyShiftsArgs } from "./FindManyShiftsArgs";
+export { FindUniqueShiftsArgs } from "./FindUniqueShiftsArgs";
+export { GroupByShiftsArgs } from "./GroupByShiftsArgs";
+export { UpdateManyShiftsArgs } from "./UpdateManyShiftsArgs";
+export { UpdateShiftsArgs } from "./UpdateShiftsArgs";
+export { UpsertShiftsArgs } from "./UpsertShiftsArgs";

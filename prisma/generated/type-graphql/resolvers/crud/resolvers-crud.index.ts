@@ -1,0 +1,10 @@
+export { ClassesCrudResolver } from "./Classes/ClassesCrudResolver";
+export { CurriculumsCrudResolver } from "./Curriculums/CurriculumsCrudResolver";
+export { EducationsCrudResolver } from "./Educations/EducationsCrudResolver";
+export { SchedulesCrudResolver } from "./Schedules/SchedulesCrudResolver";
+export { SchoolsCrudResolver } from "./Schools/SchoolsCrudResolver";
+export { ShiftsCrudResolver } from "./Shifts/ShiftsCrudResolver";
+export { SubjectsCrudResolver } from "./Subjects/SubjectsCrudResolver";
+export { TeachersCrudResolver } from "./Teachers/TeachersCrudResolver";
+export { TimesheetsCrudResolver } from "./Timesheets/TimesheetsCrudResolver";
+export { UsersCrudResolver } from "./Users/UsersCrudResolver";

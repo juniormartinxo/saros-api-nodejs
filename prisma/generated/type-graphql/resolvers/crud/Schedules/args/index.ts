@@ -1,0 +1,12 @@
+export { AggregateSchedulesArgs } from "./AggregateSchedulesArgs";
+export { CreateManySchedulesArgs } from "./CreateManySchedulesArgs";
+export { CreateSchedulesArgs } from "./CreateSchedulesArgs";
+export { DeleteManySchedulesArgs } from "./DeleteManySchedulesArgs";
+export { DeleteSchedulesArgs } from "./DeleteSchedulesArgs";
+export { FindFirstSchedulesArgs } from "./FindFirstSchedulesArgs";
+export { FindManySchedulesArgs } from "./FindManySchedulesArgs";
+export { FindUniqueSchedulesArgs } from "./FindUniqueSchedulesArgs";
+export { GroupBySchedulesArgs } from "./GroupBySchedulesArgs";
+export { UpdateManySchedulesArgs } from "./UpdateManySchedulesArgs";
+export { UpdateSchedulesArgs } from "./UpdateSchedulesArgs";
+export { UpsertSchedulesArgs } from "./UpsertSchedulesArgs";
