@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client'
 //import formatISO from 'date-fns/formatISO'
 import parseISO from 'date-fns/parseISO'
 import { format } from 'date-fns'
+import {} from 'date-fns/locale'
 
 const prisma = new PrismaClient()
 
